@@ -7,11 +7,11 @@ const path = require('path')
 const GridFsStorage = require('multer-gridfs-storage')
 const multer = require('multer')
 const Grid = require('gridfs-stream')
-const mongoURL = 'mongodb://localhost:27017/youtube'
+
 
 const connectDB = async()=>{
     try{
-        await mongoose.connect(mongoURL)
+        await mongoose.connect(process.env.MONGO_URL)
     }catch(err){
       
         process.exit(1)
