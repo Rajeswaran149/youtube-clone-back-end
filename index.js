@@ -32,7 +32,11 @@ const init = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }))
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: '*'
+    })
+  );
 
   // establish a connection wiht the database
 
