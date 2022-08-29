@@ -7,7 +7,8 @@ const crypto = require('crypto') // <---- built-in nodejs package
 const path = require('path')
 const GridFsStorage = require('multer-gridfs-storage')
 const multer = require('multer')
-const Grid = require('gridfs-stream')
+const Grid = require('gridfs-stream');
+const { Server } = require('tls');
 const mongoURL = "mongodb+srv://rajeswaran:WQlO2zYL8aK1vtfO@cluster0.eutso4r.mongodb.net/youtube?retryWrites=true&w=majority"
 
 
@@ -23,6 +24,7 @@ const connectDB = async () => {
 const PORT = process.env.PORT || 3003;
 const app = express();
 
+app.headersTimeout = 10000;
 
 const init = async () => {
 
