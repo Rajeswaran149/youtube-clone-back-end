@@ -62,6 +62,7 @@ const init = async () => {
           const filename =
             buf.toString('hex') + path.extname(file.originalname);
           const fileInfo = {
+            originalname,
             filename,
             bucketName: 'media'
           };
