@@ -67,7 +67,6 @@ const init = async () => {
           const filename =
             buf.toString('hex') + path.extname(file.originalname);
           const fileInfo = {
-            originalname,
             filename,
             bucketName: 'media'
           };
@@ -85,9 +84,9 @@ const init = async () => {
   });
 
   // route for uploading a file
-  app.post('/upload', (req, res) => {
-    req.socket.setTimeout(1*60*1000)
-    upload.single('file')
+  app.post('/upload',upload.single('file'), (req, res) => {
+    // req.socket.setTimeout(1*60*1000)
+    // upload.single('file')
     res.json(req.file)
   })
 
