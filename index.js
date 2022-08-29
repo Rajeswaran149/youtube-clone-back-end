@@ -24,7 +24,6 @@ const connectDB = async () => {
 const PORT = process.env.PORT || 3003;
 const app = express();
 
-app.headersTimeout = 10000;
 
 const init = async () => {
 
@@ -86,8 +85,9 @@ const init = async () => {
   });
 
   // route for uploading a file
-  app.post('/upload', upload.single('file'), (req, res) => {
-
+  app.post('/upload', (req, res) => {
+    req.socket.setTimeout(1*60*1000)
+    upload.single('file')
     res.json(req.file)
   })
 
